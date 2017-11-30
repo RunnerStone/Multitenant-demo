@@ -1,0 +1,15 @@
+com\test\mongo\controller\NotAuthorizedException.class
+com\test\mongo\models\CustomerRepository.class
+com\test\mongo\ServletInitializer.class
+com\test\mongo\controller\CustomerController.class
+com\test\mongo\controller\DefaultController.class
+com\test\mongo\DemoApplication.class
+com\test\mongo\models\Customer.class
+com\test\mongo\services\UserServiceClient$User.class
+com\test\mongo\util\TenantProvider.class
+com\test\mongo\util\TenantProviderFilter.class
+com\test\mongo\util\WebAppContextConfig.class
+com\test\mongo\services\GetUserCommand.class
+com\test\mongo\services\UserServiceClient.class
+com\test\mongo\util\RestTemplateConfig.class
+com\test\mongo\util\WebSecurityConfig.class

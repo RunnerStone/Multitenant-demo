@@ -1,0 +1,32 @@
+{
+    "xsappname"     : "multitenancy-mongodb-i317067",
+    "description"   : "Enabled mongodb for multi tenants",
+    "tenant-mode"   : "shared",
+    "scopes"        : [
+                        {
+                          "name"                 : "$XSAPPNAME.Display",
+                          "description"          : "Display customers"
+                        },
+                        {
+                          "name"                 : "$XSAPPNAME.Update",
+                          "description"          : "Update"
+                        }
+                      ],
+    "role-templates": [
+                        {
+                          "name"                 : "Viewer",
+                          "description"          : "View customers",
+                          "scope-references"     : [
+                                                        "$XSAPPNAME.Display"             
+                                                   ]                                            
+                        },
+                        {
+                          "name"                 : "Administrator",
+                          "description"          : "Administrator",
+                          "scope-references"     : [
+                                                        "$XSAPPNAME.Display",             
+                                                        "$XSAPPNAME.Update"             
+                                                   ]                                            
+                        }
+    ]
+}

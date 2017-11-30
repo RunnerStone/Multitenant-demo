@@ -1,0 +1,38 @@
+applications:
+# - name: customer-test-multitenancy-i317067
+#   host: customer-test-multitenancy-i317067
+#   memory: 800M
+#   path: target/demo-mongodb-1.jar
+#   # buildpack: sap_java_buildpack
+#   buildpack: https://github.com/cloudfoundry/java-buildpack.git#v3.19
+#   # health-check-type: http
+#   # health-check-http-endpoint: /health
+#   env:
+#       USER_ROUTE: 'https://bulletinboard-users-course.cfapps.sap.hana.ondemand.com'
+#       # Use the non-blocking /dev/urandom instead of the default to generate random numbers.
+#       # When using Java community buildpack, increase startup times, especially when using Spring Boot.
+#       JAVA_OPTS: -Djava.security.egd=file:///dev/./urandom
+#   services:
+#   - test-mongodb
+#   - applogs-bulletinboard
+#   - uaa-multitenancy
+
+- name: approuter
+  host: approuter-i317067
+  path: src/main/approuter
+  buildpack: nodejs_buildpack
+  memory: 128M
+  env:
+    XSAPPNAME: multitenancy-mongodb-i317067
+    TENANT_HOST_PATTERN: "^(.*)-approuter-i317067.cfapps.sap.hana.ondemand.com"
+    destinations: >
+      [
+        {"name":"mongo-destination", 
+         "url":"https://customer-test-multitenancy-i317067.cfapps.sap.hana.ondemand.com",
+         "forwardAuthToken": true},
+         {"name":"questionnaire-destination", 
+         "url":"https://questionnaire-demo-i317067.cfapps.sap.hana.ondemand.com",
+         "forwardAuthToken": true}
+      ]
+  services:
+    - uaa-multitenancy

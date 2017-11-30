@@ -1,0 +1,17 @@
+{
+    "welcomeFile": "index.html",
+    "routes": [{
+        "source": "^/mongo/api/",
+        "target": "/api/",
+        "destination": "mongo-destination",
+        "scope": "$XSAPPNAME.Display"
+      }, {
+        "source": "^/mongo",
+        "target": "/",
+        "destination": "mongo-destination"
+    }, {
+        "source": "^/ques",
+        "target": "/",
+        "destination": "questionnaire-destination"
+    }]
+}
